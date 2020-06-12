@@ -1,56 +1,61 @@
 ## 1. РАЗРАБОТКА ЛОГИЧЕСКОЙ МОДЕЛИ ПРЕДМЕТНОЙ ОБЛАСТИ
 
-- students
+```
 
+- students
   - name
-  - groupId
+  - group_id
 
 - groups
-
   - name
-  - specialityId
+  - speciality_id
 
 - specialities
-
   - name
-  - distinctId
+  - distiction_id
 
 - distictions
-
   - name
 
 - teachers
+  - first_name
+  - last_name
+  - phone_number
+  - experience_cumulative
+  - experience_current_started_at
 
-  - name
-  - lastname
-  - phone
-  - experience (startedAt ?)
-
-- lessonTypes
-
-- timeslots
-
-- weekly_schedule
-
-  - timeslotId
-  - groupId
-  - teacherId
-  - courseId
-  - lessonTypeId
-    (check uniqueness: timeslot+groupId, timeslo+teacherId)
-    (check courseId+teacherId)
+- lesson_types : lecture or practice
 
 - courses (предметы)
+  - name
 
-- teachersAbilities
+- teachers_abilities (unique concurrently)
+  - teacher_id
+  - course_id
 
-  - teacherId
-  - courseId
+- timeslots : weekly slots
+
+- weekly_schedule
+  - timeslot_id
+  - group_id
+  - teacher_id
+  - course_id
+  - lesson_type_id
+    (check uniqueness: timeslot+group_id, timeslot+teacher_id)
+    (check courseId+teacherId)
+    foreign keys:
+      - timeslot_id
+      - group_id
+      - teacher_id, course_id
+
+
 
 - tariffs
-  - courseId
-  - lessonTypeId
+  - course_id
+  - lesson_type_id
   - price
+
+```
 
 ## 2. РАЗРАБОТКА ФИЗИЧЕСКОЙ МОДЕЛИ ДАННЫХ И РЕАЛИЗАЦИЯ БАЗЫ ДАННЫХ
 
