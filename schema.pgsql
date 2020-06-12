@@ -45,10 +45,7 @@ CREATE TABLE lesson_types(
     lesson_type_name VARCHAR (255) NOT NULL,
     created_at TIMESTAMP NOT NULL DEFAULT NOW()
 );
-INSERT INTO lesson_types (id, lesson_type_name)
-VALUES (1, 'Lection'),
-    (2, 'Practice');
-;
+
 CREATE TABLE courses(
     id serial PRIMARY KEY,
     course_name VARCHAR (255) NOT NULL,

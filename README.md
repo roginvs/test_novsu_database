@@ -108,7 +108,7 @@ cp out/diagrams/summary/relationships.real.large.png relationships.real.large.pn
 ### Sql код таблиц
 
 ```bash
-cat auth.pgsql schema.pgsql | docker exec -i psql psql -U postgres
+cat auth.pgsql schema.pgsql data.pgsql | docker exec -i psql psql -U postgres
 ```
 
 См
