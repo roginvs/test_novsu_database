@@ -68,8 +68,8 @@ CREATE TABLE courses(
 );
 /* */
 CREATE TABLE teachers_abilities(
-    teacher_id INTEGER,
-    course_id INTEGER,
+    teacher_id INTEGER NOT NULL,
+    course_id INTEGER NOT NULL,
     created_at TIMESTAMP NOT NULL DEFAULT NOW(),
     PRIMARY KEY (teacher_id, course_id)
 );
@@ -77,11 +77,11 @@ CREATE TABLE teachers_abilities(
 /* */
 CREATE TABLE timeslots(
     id serial primary key,
-    day_of_week INTEGER CHECK (
+    day_of_week INTEGER NOT NULL CHECK (
         day_of_week >= 1
         and day_of_week <= 5
     ),
-    lesson_number INTEGER CHECK (
+    lesson_number INTEGER NOT NULL CHECK (
         lesson_number >= 0
         and lesson_number <= 5
     ),
@@ -101,6 +101,25 @@ VALUES (1, 1, 0),
     (10, 3, 1),
     (11, 3, 2),
     (12, 3, 3);
+;
+;
+/* */
+CREATE TABLE weekly_schedule (
+    id serial primary key,
+    timeslot_id INTEGER NOT NULL,
+    group_id INTEGER,
+    teacher_id INTEGER,
+    course_id INTEGER,
+    lesson_type_id INTEGER,
+    FOREIGN KEY (timeslot_id) REFERENCES timeslots (id),
+    FOREIGN KEY (group_id) REFERENCES groups (id),
+    FOREIGN KEY (teacher_id) REFERENCES teachers (id),
+    FOREIGN KEY (lesson_type_id) REFERENCES lesson_types (id),
+    FOREIGN KEY (teacher_id, course_id) REFERENCES teachers_abilities (teacher_id, course_id),
+    UNIQUE(group_id, timeslot_id),
+    UNIQUE(teacher_id, timeslot_id)
+);
+;
 /* 
  Sample data 
  
