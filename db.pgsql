@@ -74,7 +74,33 @@ CREATE TABLE teachers_abilities(
     PRIMARY KEY (teacher_id, course_id)
 );
 ;
-;
+/* */
+CREATE TABLE timeslots(
+    id serial primary key,
+    day_of_week INTEGER CHECK (
+        day_of_week >= 1
+        and day_of_week <= 5
+    ),
+    lesson_number INTEGER CHECK (
+        lesson_number >= 0
+        and lesson_number <= 5
+    ),
+    created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+    unique(day_of_week, lesson_number)
+);
+INSERT INTO timeslots(id, day_of_week, lesson_number)
+VALUES (1, 1, 0),
+    (2, 1, 1),
+    (3, 1, 2),
+    (4, 1, 3),
+    (5, 2, 0),
+    (6, 2, 1),
+    (7, 2, 2),
+    (8, 2, 3),
+    (9, 3, 0),
+    (10, 3, 1),
+    (11, 3, 2),
+    (12, 3, 3);
 /* 
  Sample data 
  
