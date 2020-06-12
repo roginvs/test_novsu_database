@@ -44,7 +44,7 @@ CREATE TABLE teachers(
     first_name VARCHAR (255) NOT NULL,
     last_name VARCHAR (255) NOT NULL,
     phone_number VARCHAR(255) NULL,
-    experience_cumulative_days INTEGER DEFAULT 0 NOT NULL,
+    experience_cumulative_days INTEGER DEFAULT 0 NOT NULL CHECK (experience_cumulative_days >= 0),
     experience_current_started_at TIMESTAMP NOT NULL DEFAULT NOW(),
     created_at TIMESTAMP NOT NULL DEFAULT NOW()
 );
@@ -73,7 +73,6 @@ CREATE TABLE teachers_abilities(
     created_at TIMESTAMP NOT NULL DEFAULT NOW(),
     PRIMARY KEY (teacher_id, course_id)
 );
-;
 ;
 ;
 /* 
