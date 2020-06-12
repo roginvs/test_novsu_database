@@ -3,18 +3,23 @@
  cat db.pgsql | docker exec -i psql psql -U postgres
  
  */
+;
+;
+;
 DROP schema IF EXISTS "rogin" CASCADE;
 CREATE schema "rogin";
+;
 SET search_path TO "rogin",
     public;
-/* ==== */
-/* */
+;
+;
+;
 CREATE TABLE distictions(
     id serial PRIMARY KEY,
     distiction_name VARCHAR (255) NOT NULL,
     created_at TIMESTAMP NOT NULL DEFAULT NOW()
 );
-/* */
+;
 CREATE TABLE specialities(
     id serial PRIMARY KEY,
     speciality_name VARCHAR (255) NOT NULL,
@@ -22,7 +27,7 @@ CREATE TABLE specialities(
     created_at TIMESTAMP NOT NULL DEFAULT NOW(),
     FOREIGN KEY (distinction_id) REFERENCES distictions (id)
 );
-/* */
+;
 CREATE TABLE groups(
     id serial PRIMARY KEY,
     group_name VARCHAR (255) NOT NULL,
@@ -30,7 +35,7 @@ CREATE TABLE groups(
     created_at TIMESTAMP NOT NULL DEFAULT NOW(),
     FOREIGN KEY (speciality_id) REFERENCES specialities (id)
 );
-/* */
+;
 CREATE TABLE students(
     id serial PRIMARY KEY,
     first_name VARCHAR (255) NOT NULL,
@@ -39,6 +44,7 @@ CREATE TABLE students(
     created_at TIMESTAMP NOT NULL DEFAULT NOW(),
     FOREIGN KEY (group_id) REFERENCES groups (id)
 );
+;
 CREATE TABLE teachers(
     id serial PRIMARY KEY,
     first_name VARCHAR (255) NOT NULL,
@@ -48,7 +54,7 @@ CREATE TABLE teachers(
     experience_current_started_at TIMESTAMP NOT NULL DEFAULT NOW(),
     created_at TIMESTAMP NOT NULL DEFAULT NOW()
 );
-/* */
+;
 CREATE TABLE lesson_types(
     id serial PRIMARY KEY,
     lesson_type_name VARCHAR (255) NOT NULL,
@@ -57,16 +63,16 @@ CREATE TABLE lesson_types(
 INSERT INTO lesson_types (id, lesson_type_name)
 VALUES (1, 'Lection'),
     (2, 'Practice');
-/* */
+;
 CREATE TABLE courses(
     id serial PRIMARY KEY,
     course_name VARCHAR (255) NOT NULL,
     created_at TIMESTAMP NOT NULL DEFAULT NOW()
     /* 
-     No link to distinction/speciality!
+     No link to distinction/speciality because course can be shared
      */
 );
-/* */
+;
 CREATE TABLE teachers_abilities(
     teacher_id INTEGER NOT NULL,
     course_id INTEGER NOT NULL,
@@ -74,7 +80,6 @@ CREATE TABLE teachers_abilities(
     PRIMARY KEY (teacher_id, course_id)
 );
 ;
-/* */
 CREATE TABLE timeslots(
     id serial primary key,
     day_of_week INTEGER NOT NULL CHECK (
@@ -103,7 +108,6 @@ VALUES (1, 1, 0),
     (12, 3, 3);
 ;
 ;
-/* */
 CREATE TABLE weekly_schedule (
     id serial primary key,
     timeslot_id INTEGER NOT NULL,
@@ -120,7 +124,6 @@ CREATE TABLE weekly_schedule (
     UNIQUE(teacher_id, timeslot_id)
 );
 ;
-/* */
 CREATE TABLE tariffs (
     id serial primary key,
     course_id INTEGER NOT NULL,
@@ -129,7 +132,11 @@ CREATE TABLE tariffs (
     FOREIGN KEY (lesson_type_id) REFERENCES lesson_types (id),
     FOREIGN KEY (course_id) REFERENCES courses (id)
 );
+;
+;
+;
 /* 
+ 
  Sample data 
  
  */
@@ -151,4 +158,5 @@ VALUES (1000, 'Clean code'),
 INSERT INTO teachers_abilities (teacher_id, course_id)
 VALUES (100, 1000),
     (101, 1001);
-/* */
+;
+;
