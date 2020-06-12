@@ -84,10 +84,20 @@
 
 ```
 wget https://github.com/schemaspy/schemaspy/releases/download/v6.1.0/schemaspy-6.1.0.jar
-wget https://jdbc.postgresql.org/download/postgresql-9.4.1208.jre6.jar
-java -jar schemaspy-6.1.0.jar -t pgsql -dp ./postgresql-9.4.1208.jre6.jar \
+#wget https://jdbc.postgresql.org/download/postgresql-9.4.1208.jre6.jar
+curl https://jdbc.postgresql.org/download/postgresql-42.2.14.jar > postgresql.jar
+# brew reinstall graphviz --with librsvg-pango
+java -jar schemaspy-6.1.0.jar -t pgsql -dp ./postgresql.jar \
    -db postgres -host localhost -port 5432 -s rogin -u vasilii -p 123123 -o out
+
+cp out/diagrams/summary/relationships.real.large.png relationships.real.large.png
 ```
+
+![Diagram](relationships.real.large.png)
+
+### Вывод
+
+Текстовый формат описания удобней для проектирования и разработки
 
 ## 2. РАЗРАБОТКА ФИЗИЧЕСКОЙ МОДЕЛИ ДАННЫХ И РЕАЛИЗАЦИЯ БАЗЫ ДАННЫХ
 
