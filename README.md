@@ -101,6 +101,18 @@ cp out/diagrams/summary/relationships.real.large.png relationships.real.large.pn
 
 ## 2. РАЗРАБОТКА ФИЗИЧЕСКОЙ МОДЕЛИ ДАННЫХ И РЕАЛИЗАЦИЯ БАЗЫ ДАННЫХ
 
+### Цель работы
+
+Создать sql файл с базой
+
+### Sql код таблиц
+
+```bash
+cat auth.pgsql schema.pgsql | docker exec -i psql psql -U postgres
+```
+
+См
+
 ## 3. ФОРМИРОВАНИЕ SQL-ЗАПРОСОВ
 
 ## 4. ДОБАВЛЕНИЕ ТРИГГЕРОВ В БАЗУ ДАННЫХ
