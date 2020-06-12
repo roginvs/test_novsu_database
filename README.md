@@ -49,7 +49,6 @@
       - teacher_id, course_id
 
 
-
 - tariffs
   - course_id
   - lesson_type_id

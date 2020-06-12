@@ -107,10 +107,10 @@ VALUES (1, 1, 0),
 CREATE TABLE weekly_schedule (
     id serial primary key,
     timeslot_id INTEGER NOT NULL,
-    group_id INTEGER,
-    teacher_id INTEGER,
-    course_id INTEGER,
-    lesson_type_id INTEGER,
+    group_id INTEGER NOT NULL,
+    teacher_id INTEGER NOT NULL,
+    course_id INTEGER NOT NULL,
+    lesson_type_id INTEGER NOT NULL,
     FOREIGN KEY (timeslot_id) REFERENCES timeslots (id),
     FOREIGN KEY (group_id) REFERENCES groups (id),
     FOREIGN KEY (teacher_id) REFERENCES teachers (id),
@@ -120,6 +120,15 @@ CREATE TABLE weekly_schedule (
     UNIQUE(teacher_id, timeslot_id)
 );
 ;
+/* */
+CREATE TABLE tariffs (
+    id serial primary key,
+    course_id INTEGER NOT NULL,
+    lesson_type_id INTEGER NOT NULL,
+    price INTEGER NOT NULL check (price > 0),
+    FOREIGN KEY (lesson_type_id) REFERENCES lesson_types (id),
+    FOREIGN KEY (course_id) REFERENCES courses (id)
+);
 /* 
  Sample data 
  
