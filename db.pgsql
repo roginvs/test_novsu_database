@@ -44,7 +44,7 @@ CREATE TABLE teachers(
     first_name VARCHAR (255) NOT NULL,
     last_name VARCHAR (255) NOT NULL,
     phone_number VARCHAR(255) NULL,
-    experience_cumulative_days INTEGER DEFAULT 1 NOT NULL,
+    experience_cumulative_days INTEGER DEFAULT 0 NOT NULL,
     experience_current_started_at TIMESTAMP NOT NULL DEFAULT NOW(),
     created_at TIMESTAMP NOT NULL DEFAULT NOW()
 );
@@ -88,5 +88,14 @@ INSERT INTO groups (id, group_name, speciality_id)
 VALUES (1, 'Group 1', 1);
 INSERT INTO students (id, first_name, last_name, group_id)
 VALUES (1, 'Vasilii', 'Rogin', 1),
-    (2, 'Bob', 'Martin', 1);
+    (2, 'Maria', 'Rogina', 1);
+INSERT INTO teachers (id, first_name, last_name)
+VALUES (100, 'Bob', 'Martin'),
+    (101, 'Steve', 'McConnell');
+INSERT INTO courses (id, course_name)
+VALUES (1000, 'Clean code'),
+    (1001, 'Code complete');
+INSERT INTO teachers_abilities (teacher_id, course_id)
+VALUES (100, 1000),
+    (101, 1001);
 /* */
