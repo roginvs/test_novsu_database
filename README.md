@@ -107,9 +107,9 @@ cp out/diagrams/summary/relationships.real.large.png relationships.real.large.pn
 
 ### Sql код таблиц
 
-- [Инициализация](init.pgsql)
-- [Создание таблиц](schema.pgsql)
-- [Данные для таблиц](data.pgsql)
+- [init.pgsq](init.pgsql) Инициализация
+- [schema.pgsql](schema.pgsql) Создание таблиц
+- [data.pgsql)](data.pgsql) Демо данные для таблиц
 
 ```bash
 docker run -d --name psql -p 5432:5432 postgres:9.6
@@ -118,6 +118,14 @@ cat schema.pgsql data.pgsql | docker exec -i psql psql -U postgres rogin
 ```
 
 ## 3. ФОРМИРОВАНИЕ SQL-ЗАПРОСОВ
+
+### Цель работы
+
+Написание sql запросов
+
+### Запросы
+
+См. файл с запросами [queries.pgsql](queries.pgsql)
 
 ```bash
 cat queries.pgsql | docker exec -i psql psql -U postgres rogin
