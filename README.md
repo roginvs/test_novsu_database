@@ -107,13 +107,13 @@ cp out/diagrams/summary/relationships.real.large.png relationships.real.large.pn
 
 ### Sql код таблиц
 
-- [Инициализация](auth.pgsql)
+- [Инициализация](init.pgsql)
 - [Создание таблиц](schema.pgsql)
 - [Данные для таблиц](data.pgsql)
 
 ```bash
 docker run -d --name psql -p 5432:5432 postgres:9.6
-cat auth.pgsql | docker exec -i psql psql -U postgres
+cat init.pgsql | docker exec -i psql psql -U postgres
 cat schema.pgsql data.pgsql | docker exec -i psql psql -U postgres rogin
 ```
 
