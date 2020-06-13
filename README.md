@@ -112,10 +112,16 @@ cp out/diagrams/summary/relationships.real.large.png relationships.real.large.pn
 - [Данные для таблиц](data.pgsql)
 
 ```bash
-cat auth.pgsql schema.pgsql data.pgsql | docker exec -i psql psql -U postgres
+docker run -d --name psql -p 5432:5432 postgres:9.6
+cat auth.pgsql | docker exec -i psql psql -U postgres
+cat schema.pgsql data.pgsql | docker exec -i psql psql -U postgres rogin
 ```
 
 ## 3. ФОРМИРОВАНИЕ SQL-ЗАПРОСОВ
+
+```bash
+cat queries.pgsql | docker exec -i psql psql -U postgres rogin
+```
 
 ## 4. ДОБАВЛЕНИЕ ТРИГГЕРОВ В БАЗУ ДАННЫХ
 
