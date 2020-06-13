@@ -57,3 +57,19 @@ WHERE
         FROM
             "tariffs");
 
+
+/*
+ Отобразить какие предметы может вести конкретный преподаватель.
+ */
+SELECT
+    "teachers"."first_name",
+    "teachers"."last_name",
+    "courses"."course_name"
+FROM
+    "teachers_abilities"
+    LEFT JOIN "teachers" ON "teachers"."id" = "teachers_abilities"."teacher_id"
+    LEFT JOIN "courses" ON ("teachers_abilities"."course_id" = "courses"."id")
+ORDER BY
+    "teacher_id",
+    "course_id";
+
