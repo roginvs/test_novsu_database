@@ -20,7 +20,10 @@ GROUP BY
 SELECT
     "teachers"."id" AS teacher_id,
     "teachers"."first_name",
-    "teachers"."last_name"
+    "teachers"."last_name",
+    "weekly_schedule"."course_id",
+    count(*) AS lessons_count,
+    sum("tariffs"."price")
 FROM
     "weekly_schedule"
     LEFT JOIN "teachers" ON "teachers"."id" = "weekly_schedule"."teacher_id"
@@ -29,3 +32,5 @@ FROM
 GROUP BY
     "teachers"."id",
     "weekly_schedule"."course_id"
+ORDER BY
+    "teachers"."id"
