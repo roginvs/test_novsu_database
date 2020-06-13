@@ -43,10 +43,13 @@ ORDER BY
  Определить наиболее доходные занятия (какие занятия приносят больше денег)
  */
 SELECT
-    *
+    "courses"."course_name",
+    "lesson_types"."lesson_type_name",
+    "price"
 FROM
     "tariffs"
     LEFT JOIN "courses" ON ("tariffs"."course_id" = "courses"."id")
+    LEFT JOIN "lesson_types" ON ("tariffs"."lesson_type_id" = "lesson_types"."id")
 WHERE
     "price" = (
         SELECT
