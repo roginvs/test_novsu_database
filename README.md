@@ -107,11 +107,11 @@ cp out/diagrams/summary/relationships.real.large.png relationships.real.large.pn
 
 ### Sql код таблиц
 
+- [auth](auth.pgsql)
+
 ```bash
 cat auth.pgsql schema.pgsql data.pgsql | docker exec -i psql psql -U postgres
 ```
-
-См
 
 ## 3. ФОРМИРОВАНИЕ SQL-ЗАПРОСОВ
 
