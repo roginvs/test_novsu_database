@@ -61,12 +61,24 @@ CREATE TABLE teachers_abilities (
     PRIMARY KEY (teacher_id, course_id)
 );
 
+CREATE INDEX course_id_teacher_id ON teachers_abilities (course_id, teacher_id);
+
 CREATE TABLE timeslots (
     id serial PRIMARY KEY,
     day_of_week integer NOT NULL CHECK (day_of_week >= 1 AND day_of_week <= 5),
     lesson_number integer NOT NULL CHECK (lesson_number >= 0 AND lesson_number <= 5),
     created_at timestamp NOT NULL DEFAULT NOW(),
     UNIQUE (day_of_week, lesson_number)
+);
+
+CREATE TABLE tariffs (
+    id serial PRIMARY KEY,
+    course_id integer NOT NULL,
+    lesson_type_id integer NOT NULL,
+    price integer NOT NULL CHECK (price > 0),
+    FOREIGN KEY (lesson_type_id) REFERENCES lesson_types (id),
+    FOREIGN KEY (course_id) REFERENCES courses (id),
+    UNIQUE (course_id, lesson_type_id)
 );
 
 CREATE TABLE weekly_schedule (
@@ -80,18 +92,9 @@ CREATE TABLE weekly_schedule (
     FOREIGN KEY (group_id) REFERENCES GROUPS (id),
     FOREIGN KEY (teacher_id) REFERENCES teachers (id),
     FOREIGN KEY (lesson_type_id) REFERENCES lesson_types (id),
-    FOREIGN KEY (teacher_id, course_id) REFERENCES teachers_abilities (teacher_id, course_id),
+    FOREIGN KEY (course_id, teacher_id) REFERENCES teachers_abilities (course_id, teacher_id),
+    FOREIGN KEY (course_id, lesson_type_id) REFERENCES tariffs (course_id, lesson_type_id),
     UNIQUE (group_id, timeslot_id),
     UNIQUE (teacher_id, timeslot_id)
-);
-
-CREATE TABLE tariffs (
-    id serial PRIMARY KEY,
-    course_id integer NOT NULL,
-    lesson_type_id integer NOT NULL,
-    price integer NOT NULL CHECK (price > 0),
-    FOREIGN KEY (lesson_type_id) REFERENCES lesson_types (id),
-    FOREIGN KEY (course_id) REFERENCES courses (id),
-    UNIQUE (course_id, lesson_type_id)
 );
 
