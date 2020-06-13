@@ -91,6 +91,7 @@ CREATE TABLE tariffs (
     lesson_type_id integer NOT NULL,
     price integer NOT NULL CHECK (price > 0),
     FOREIGN KEY (lesson_type_id) REFERENCES lesson_types (id),
-    FOREIGN KEY (course_id) REFERENCES courses (id)
+    FOREIGN KEY (course_id) REFERENCES courses (id),
+    UNIQUE (course_id, lesson_type_id)
 );
 

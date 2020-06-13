@@ -32,7 +32,7 @@ INSERT INTO teachers_abilities (teacher_id, course_id)
     VALUES (100, 1000), (101, 1001);
 
 INSERT INTO tariffs (course_id, lesson_type_id, price)
-    VALUES (1000, 1, 400), (1000, 2, 450), (1001, 1, 600), (1000, 2, 650);
+    VALUES (1000, 1, 400), (1000, 2, 450), (1001, 1, 600), (1001, 2, 650);
 
 INSERT INTO weekly_schedule (timeslot_id, group_id, teacher_id, course_id, lesson_type_id)
     VALUES (1, 1, 100, 1000, 1), (2, 1, 100, 1000, 2), (3, 1, 101, 1001, 1), (4, 1, 101, 1001, 2), (5, 1, 101, 1001, 2);

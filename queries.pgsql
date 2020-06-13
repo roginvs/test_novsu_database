@@ -12,3 +12,19 @@ FROM
 GROUP BY
     "teachers"."id";
 
+
+/*
+ 2. Сколько денег получит преподаватель за проведенные занятия по определенной
+дисциплине.
+ */
+SELECT
+    /*   "teachers"."id" AS teacher_id,
+     "teachers"."first_name",
+     "teachers"."last_name",
+     */
+    *
+FROM
+    "teachers"
+    LEFT JOIN "weekly_schedule" ON "teachers"."id" = "weekly_schedule"."teacher_id"
+    LEFT JOIN "tariffs" ON "weekly_schedule"."course_id" = "tariffs"."course_id"
+        AND "weekly_schedule"."lesson_type_id" = "tariffs"."lesson_type_id"
