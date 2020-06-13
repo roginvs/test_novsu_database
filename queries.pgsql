@@ -21,7 +21,9 @@ SELECT
     "teachers"."id" AS teacher_id,
     "teachers"."first_name",
     "teachers"."last_name",
-    "weekly_schedule"."course_id",
+    /* "weekly_schedule"."course_id", */
+    /* @TODO: Why psql needs aggregate function if we already aggregate by course_id ? */
+    MAX("courses"."course_name") AS "course_name",
     count(*) AS lessons_count,
     sum("tariffs"."price")
 FROM
@@ -29,8 +31,26 @@ FROM
     LEFT JOIN "teachers" ON "teachers"."id" = "weekly_schedule"."teacher_id"
     LEFT JOIN "tariffs" ON "weekly_schedule"."course_id" = "tariffs"."course_id"
         AND "weekly_schedule"."lesson_type_id" = "tariffs"."lesson_type_id"
+    LEFT JOIN "courses" ON ("weekly_schedule"."course_id" = "courses"."id")
 GROUP BY
     "teachers"."id",
     "weekly_schedule"."course_id"
 ORDER BY
-    "teachers"."id"
+    "teachers"."id";
+
+
+/*
+ Определить наиболее доходные занятия (какие занятия приносят больше денег)
+ */
+SELECT
+    *
+FROM
+    "tariffs"
+    LEFT JOIN "courses" ON ("tariffs"."course_id" = "courses"."id")
+WHERE
+    "price" = (
+        SELECT
+            MAX("price")
+        FROM
+            "tariffs");
+

@@ -26,13 +26,13 @@ INSERT INTO teachers (id, first_name, last_name)
     VALUES (100, 'Bob', 'Martin'), (101, 'Steve', 'McConnell'), (102, 'Donald', 'Knuth'), (103, 'Slowpoke', 'Pokemon'), (104, 'Superman', 'Knowseverything');
 
 INSERT INTO courses (id, course_name)
-    VALUES (1000, 'Clean code'), (1001, 'Code complete'), (1002, 'The Art of Computer Programming'), (1003, 'How to be very slow');
+    VALUES (1000, 'Clean code'), (1001, 'Code complete'), (1002, 'The Art of Computer Programming part1'), (1003, 'How to be very slow'), (1004, 'The Art of Computer Programming part2');
 
 INSERT INTO teachers_abilities (teacher_id, course_id)
-    VALUES (100, 1000), (101, 1001), (102, 1002), (103, 1003), (104, 1000), (104, 1001), (104, 1002), (104, 1003);
+    VALUES (100, 1000), (101, 1001), (102, 1002), (103, 1003), (104, 1000), (104, 1001), (104, 1002), (104, 1003), (102, 1004);
 
 INSERT INTO tariffs (course_id, lesson_type_id, price)
-    VALUES (1000, 1, 400), (1000, 2, 450), (1001, 1, 600), (1001, 2, 650), (1002, 1, 2000), (1002, 2, 2050), (1003, 1, 10);
+    VALUES (1000, 1, 400), (1000, 2, 450), (1001, 1, 600), (1001, 2, 650), (1002, 1, 2000), (1002, 2, 2050), (1004, 1, 2000), (1004, 2, 2050), (1003, 1, 10);
 
 INSERT INTO weekly_schedule (timeslot_id, group_id, teacher_id, course_id, lesson_type_id)
     VALUES (1, 1, 100, 1000, 1), (2, 1, 100, 1000, 2), (3, 1, 101, 1001, 1), (4, 1, 101, 1001, 2), (5, 1, 101, 1001, 2), (8, 1, 102, 1002, 1), (9, 1, 102, 1002, 1), (10, 1, 102, 1002, 2), (11, 1, 102, 1002, 2), (13, 1, 104, 1000, 1), (14, 1, 104, 1001, 1), (15, 1, 104, 1002, 1), (16, 1, 104, 1003, 1), (17, 1, 104, 1000, 1), (18, 1, 104, 1001, 1), (19, 1, 104, 1002, 1), (20, 1, 104, 1003, 1);
