@@ -142,7 +142,8 @@ cat queries.pgsql | docker exec -i psql psql -U postgres rogin
 См файл [triggers.pgsql](triggers.pgsql)
 
 ```bash
-cat triggers.pgsql | docker exec -i psql psql -U postgres rogin
+cat trigger1.pgsql | docker exec -i psql psql -U postgres rogin
+cat trigger2.pgsql | docker exec -i psql psql -U postgres rogin
 ```
 
 ## 5. СОЗДАНИЕ ПРЕДСТАВЛЕНИЙ В БАЗЕ ДАННЫХ

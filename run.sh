@@ -6,4 +6,4 @@ cat schema.pgsql data.pgsql | docker exec -i psql psql -U postgres rogin
 
 cat queries.pgsql | docker exec -i psql psql -U postgres rogin
 
-cat triggers.pgsql | docker exec -i psql psql -U postgres rogin
+cat trigger*.pgsql | docker exec -i psql psql -U postgres rogin
