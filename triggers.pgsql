@@ -1,4 +1,6 @@
-/* */
+/* 
+ Добавить дефолтную цену для каждого курса
+ */
 CREATE OR REPLACE FUNCTION create_tariffs_for_course ()
     RETURNS TRIGGER
     AS $BODY$
@@ -20,13 +22,13 @@ LANGUAGE plpgsql;
 
 DROP TRIGGER IF EXISTS trigger_create_tariffs_for_courses ON courses;
 
-
-/** Demo data **/
 CREATE TRIGGER trigger_create_tariffs_for_courses
     AFTER INSERT ON courses
     FOR EACH ROW
     EXECUTE PROCEDURE create_tariffs_for_course ();
 
+
+/** Demo data **/
 SELECT
     *
 FROM
