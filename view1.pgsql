@@ -104,12 +104,14 @@ CREATE TRIGGER tr_view1_delete
     EXECUTE PROCEDURE view1_delete ();
 
 
-/* ----- Демонстрация ----- */
+/* ----- Демонстрация select ----- */
 SELECT
     *
 FROM
     view1;
 
+
+/* ----- Демонстрация update ----- */
 UPDATE
     view1
 SET
@@ -123,7 +125,7 @@ FROM
     view1;
 
 
-/* insert */
+/* ----- Демонстрация insert ----- */
 SELECT
     *
 FROM
@@ -131,6 +133,21 @@ FROM
 
 INSERT INTO view1 (first_name, last_name, course_name)
     VALUES ('New name', 'New last name', 'New course');
+
+SELECT
+    *
+FROM
+    view1;
+
+
+/* ----- Демонстрация delete ----- */
+INSERT INTO teachers_abilities (teacher_id, course_id)
+    VALUES (1, 2)
+    /* This is to show "on each row" delete */
+;
+
+DELETE FROM view1
+WHERE teacher_id = 1;
 
 SELECT
     *
