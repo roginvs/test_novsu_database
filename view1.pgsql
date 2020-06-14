@@ -15,11 +15,6 @@ ORDER BY
     "teacher_id",
     "course_id";
 
-SELECT
-    *
-FROM
-    view1;
-
 CREATE OR REPLACE FUNCTION alter_view1 ()
     RETURNS TRIGGER
     AS $BODY$
@@ -48,11 +43,21 @@ CREATE TRIGGER tr_view1
     EXECUTE PROCEDURE alter_view1 ();
 
 
-/* Демонстрация */
+/* ----- Демонстрация ----- */
+SELECT
+    *
+FROM
+    view1;
+
 UPDATE
     view1
 SET
     "course_name" = 'Cleanest code'
 WHERE
     course_id = 1000;
+
+SELECT
+    *
+FROM
+    view1;
 

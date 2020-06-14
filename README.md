@@ -153,3 +153,10 @@ cat trigger2.pgsql | docker exec -i psql psql -U postgres rogin
 Создать представление с возможностью изменения
 
 ### SQL
+
+См файлы [view1.pgsql](view1.pgsql) [view2.pgsql](view2.pgsql)
+
+```bash
+cat view1.pgsql | docker exec -i psql psql -U postgres rogin
+cat view2.pgsql | docker exec -i psql psql -U postgres rogin
+```
