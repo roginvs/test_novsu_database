@@ -24,9 +24,20 @@ CREATE TRIGGER tr_validate_group_name
 INSERT INTO GROUPS (group_name, speciality_id)
     VALUES ('Valid group', 1);
 
+SELECT
+    'Failing query below' AS info;
+
 INSERT INTO GROUPS (group_name, speciality_id)
     VALUES ('', 1);
 
+SELECT
+    'Failing query below' AS info;
+
 INSERT INTO GROUPS (group_name, speciality_id)
     VALUES ('Lol keke lol', 1);
+
+SELECT
+    *
+FROM
+    GROUPS;
 

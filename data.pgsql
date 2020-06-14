@@ -19,6 +19,9 @@ INSERT INTO specialities (id, distinction_id, speciality_name)
 INSERT INTO GROUPS (id, group_name, speciality_id)
     VALUES (1, 'Group 1', 1);
 
+ALTER SEQUENCE groups_id_seq
+    RESTART WITH 2;
+
 INSERT INTO students (id, first_name, last_name, group_id)
     VALUES (1, 'Vasilii', 'Rogin', 1), (2, 'Maria', 'Rogina', 1);
 
