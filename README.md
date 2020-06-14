@@ -109,7 +109,7 @@ cp out/diagrams/summary/relationships.real.large.png relationships.real.large.pn
 
 - [init.pgsq](init.pgsql) Инициализация
 - [schema.pgsql](schema.pgsql) Создание таблиц
-- [data.pgsql)](data.pgsql) Демо данные для таблиц
+- [data.pgsql](data.pgsql) Демо данные для таблиц
 
 ```bash
 docker run -d --name psql -p 5432:5432 postgres:9.6
