@@ -133,4 +133,16 @@ cat queries.pgsql | docker exec -i psql psql -U postgres rogin
 
 ## 4. ДОБАВЛЕНИЕ ТРИГГЕРОВ В БАЗУ ДАННЫХ
 
+### Цель работы
+
+Добавить триггеры
+
+### Триггеры
+
+См файл [triggers.pgsql](triggers.pgsql)
+
+```bash
+cat triggers.pgsql | docker exec -i psql psql -U postgres rogin
+```
+
 ## 5. СОЗДАНИЕ ПРЕДСТАВЛЕНИЙ В БАЗЕ ДАННЫХ
